@@ -77,7 +77,7 @@ const ExperienceSection = () => {
             <motion.div
               key={exp.id}
               variants={itemVariants}
-              className={`relative flex items-center mb-12 ${
+              className={`relative flex items-start mb-12 px-1 sm:px-2 lg:px-8 flex-col sm:flex-col md:flex-row ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
@@ -87,27 +87,25 @@ const ExperienceSection = () => {
               {/* Content card */}
               <motion.div
                 variants={itemVariants}
-                className={`ml-20 md:ml-0 md:w-5/12 ${
-                  index % 2 === 0 ? 'md:pr-8 md:text-left' : 'md:pl-8 md:text-left'
+                className={`ml-12 sm:ml-0 md:ml-0 md:w-4/12 sm:w-4/12 w-10/12 px-1 sm:px-2 md:px-0 ${
+                  index % 2 === 0 ? 'md:pl-8 md:text-left' : 'md:pr-8 md:text-left'
                 }`}
               >
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-2 sm:p-3 md:p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:scale-105 h-auto min-h-fit">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="text-left">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white">
                         {exp.company}
                       </h3>
-                      <p className="text-lg text-blue-600 dark:text-blue-400 font-medium">
+                      <p className="text-base sm:text-lg text-blue-600 dark:text-blue-400 font-medium">
                         {exp.position}
                       </p>
                     </div>
                   </div>
 
                   {/* Period and location */}
-                  <div className={`flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4 ${
-                    index % 2 === 0 ? 'md:justify-start' : 'md:justify-start'
-                  }`}>
+                  <div className={`flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-4 justify-start`}>
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{exp.period}</span>
@@ -115,7 +113,7 @@ const ExperienceSection = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                     {exp.description}
                   </p>
 
@@ -126,7 +124,7 @@ const ExperienceSection = () => {
                       {exp.achievements.map((achievement: string, achIndex: number) => (
                         <li
                           key={achIndex}
-                          className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2"
+                          className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2"
                         >
                           <span className="text-blue-600 dark:text-blue-400 mt-1">•</span>
                           <span>{achievement}</span>
@@ -138,15 +136,13 @@ const ExperienceSection = () => {
                   {/* Technologies */}
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Technologies Used:</h4>
-                    <div className={`flex flex-wrap gap-2 ${
-                      index % 2 === 0 ? 'md:justify-end' : 'justify-start'
-                    }`}>
+                    <div className={`flex flex-wrap gap-1 sm:gap-2 justify-start`}>
                       {exp.tech.map((tech: string, techIndex: number) => (
                         <motion.span
                           key={tech}
                           variants={techBadgeVariants}
                           custom={techIndex}
-                          className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium border border-blue-200 dark:border-blue-700"
+                          className="bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 sm:px-3 rounded-full text-xs sm:text-sm font-medium border border-blue-200 dark:border-blue-700"
                         >
                           {tech}
                         </motion.span>
