@@ -31,7 +31,7 @@ const ResumeSection = () => {
   const handleDownloadResume = () => {
     // Create a placeholder resume download
     const link = document.createElement('a')
-    link.href = '/resume.pdf'
+    link.href = '/Piyush Kumar_JAN_26.pdf'
     link.download = 'Piyush_Kumar_Resume.pdf'
     link.click()
   }
