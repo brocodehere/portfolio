@@ -13,11 +13,12 @@ export const metadata: Metadata = {
   description: "Building scalable e-commerce and secure learning platforms with modern web technologies. Golang | React | PostgreSQL | Redis",
   keywords: ["Full-Stack Developer", "Golang", "React", "PostgreSQL", "Redis", "E-commerce", "Web Development"],
   authors: [{ name: "Piyush Kumar" }],
-  icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
-  },
+  icons: [
+    { rel: 'icon', url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+    { rel: 'icon', url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+    { rel: 'apple-touch-icon', url: '/favicon.png', sizes: '180x180', type: 'image/png' },
+  ],
+  manifest: '/manifest.json',
   openGraph: {
     title: "Piyush Kumar - Full-Stack Developer",
     description: "Building scalable e-commerce and secure learning platforms with modern web technologies",
@@ -38,6 +39,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
