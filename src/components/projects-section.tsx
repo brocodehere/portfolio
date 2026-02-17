@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { projects } from '@/data/projects'
-import { ExternalLink, Github, X, Calendar, Users, Zap } from 'lucide-react'
+import { ExternalLink, Github, X, Calendar, Users, Zap, ArrowRight } from 'lucide-react'
 
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null)
@@ -125,9 +125,17 @@ const ProjectsSection = () => {
                 {/* Project Image */}
                 <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${getCategoryColor(project.category)} rounded-xl flex items-center justify-center text-white`}>
-                      {getCategoryIcon(project.category)}
-                    </div>
+                    {project.logo ? (
+                      <img
+                        src={project.logo}
+                        alt={project.title}
+                        className="h-16 w-auto max-w-[120px] object-contain"
+                      />
+                    ) : (
+                      <div className={`w-16 h-16 bg-gradient-to-r ${getCategoryColor(project.category)} rounded-xl flex items-center justify-center text-white`}>
+                        {getCategoryIcon(project.category)}
+                      </div>
+                    )}
                   </div>
                   <div className="absolute top-4 right-4">
                     <span className={`bg-gradient-to-r ${getCategoryColor(project.category)} text-white px-3 py-1 rounded-full text-xs font-medium`}>
@@ -198,9 +206,17 @@ const ProjectsSection = () => {
                 {/* Modal Header */}
                 <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className={`w-24 h-24 bg-gradient-to-r ${getCategoryColor(selectedProject.category)} rounded-2xl flex items-center justify-center text-white`}>
-                      {getCategoryIcon(selectedProject.category)}
-                    </div>
+                    {selectedProject.logo ? (
+                      <img
+                        src={selectedProject.logo}
+                        alt={selectedProject.title}
+                        className="h-24 w-auto max-w-[200px] object-contain"
+                      />
+                    ) : (
+                      <div className={`w-24 h-24 bg-gradient-to-r ${getCategoryColor(selectedProject.category)} rounded-2xl flex items-center justify-center text-white`}>
+                        {getCategoryIcon(selectedProject.category)}
+                      </div>
+                    )}
                   </div>
                   <button
                     onClick={() => setSelectedProject(null)}
@@ -220,6 +236,70 @@ const ProjectsSection = () => {
                       {selectedProject.category}
                     </span>
                   </div>
+
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Problem Statement</h3>
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {selectedProject.problem}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">My Role</h3>
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                      <ul className="space-y-2">
+                        {selectedProject.role?.map((responsibility: string, index: number) => (
+                          <li key={index} className="flex items-start gap-3">
+                            <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-gray-700 dark:text-gray-300">{responsibility}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Architecture Overview</h3>
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
+                        <div className="flex items-center gap-2 bg-white dark:bg-gray-900 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700">
+                          <span className="font-medium text-gray-900 dark:text-white">User</span>
+                          <ArrowRight className="h-4 w-4 text-gray-400" />
+                        </div>
+                        <div className="flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 px-3 py-2 rounded-lg border border-blue-200 dark:border-blue-700">
+                          <span className="font-medium text-blue-800 dark:text-blue-300">Frontend (React)</span>
+                          <ArrowRight className="h-4 w-4 text-blue-600" />
+                        </div>
+                        <div className="flex items-center gap-2 bg-purple-100 dark:bg-purple-900/30 px-3 py-2 rounded-lg border border-purple-200 dark:border-purple-700">
+                          <span className="font-medium text-purple-800 dark:text-purple-300">API Layer (Node/Express)</span>
+                          <ArrowRight className="h-4 w-4 text-purple-600" />
+                        </div>
+                        <div className="flex items-center gap-2 bg-green-100 dark:bg-green-900/30 px-3 py-2 rounded-lg border border-green-200 dark:border-green-700">
+                          <span className="font-medium text-green-800 dark:text-green-300">Database (PostgreSQL + Redis)</span>
+                          <ArrowRight className="h-4 w-4 text-green-600" />
+                        </div>
+                        <div className="flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 px-3 py-2 rounded-lg border border-orange-200 dark:border-orange-700">
+                          <span className="font-medium text-orange-800 dark:text-orange-300">Cloudflare R2</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {selectedProject.metrics && (
+                    <div className="mb-6">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Impact & Metrics</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {selectedProject.metrics.map((metric: any, index: number) => (
+                          <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">{metric.value}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <div className="mb-6">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Overview</h3>
@@ -255,7 +335,7 @@ const ProjectsSection = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-4 mb-4 justify-center">
                     {selectedProject.live && (
                       <motion.a
                         href={selectedProject.live}
@@ -282,6 +362,13 @@ const ProjectsSection = () => {
                         View Code
                       </motion.a>
                     )}
+                  </div>
+
+                  {/* GitHub Note */}
+                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                    <p className="text-sm text-blue-800 dark:text-blue-200 text-center">
+                      <span className="font-medium">Source code available upon request.</span>
+                    </p>
                   </div>
                 </div>
               </motion.div>

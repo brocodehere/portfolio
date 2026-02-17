@@ -23,9 +23,13 @@ const Navigation = () => {
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Resume', href: '#resume' },
     { label: 'Contact', href: '#contact' }
   ]
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <motion.nav
@@ -58,6 +62,7 @@ const Navigation = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection(item.href.substring(1))}
               >
                 {item.label}
               </motion.a>
@@ -128,7 +133,6 @@ const Navigation = () => {
           <div className="py-4 space-y-2">
             {navItems.map((item, index) => (
               <motion.a
-                key={item.label}
                 href={item.href}
                 className="block px-4 py-2 text-muted-foreground hover:text-foreground transition-colors"
                 initial={{ x: -50, opacity: 0 }}
@@ -137,7 +141,12 @@ const Navigation = () => {
                   opacity: isMobileMenuOpen ? 1 : 0
                 }}
                 transition={{ delay: index * 0.1 }}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  scrollToSection(item.href.substring(1))
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {item.label}
               </motion.a>

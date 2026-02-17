@@ -212,7 +212,7 @@ const ResumeSection = () => {
                 Download Full Resume
               </motion.button>
               <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-                Available in PDF format • Updated January 2025
+                Available in PDF format • Updated January 2026
               </p>
             </motion.div>
 

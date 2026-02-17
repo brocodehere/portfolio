@@ -162,7 +162,7 @@ const HeroSection = () => {
           >
             <span className="font-medium">Golang | React | PostgreSQL | Redis</span>
             <p className="mt-4 text-base sm:text-lg">
-              Building scalable e-commerce and secure learning platforms with modern web technologies.
+              Helping startups and businesses build secure, high-performance web platforms.
             </p>
           </motion.div>
 
@@ -173,27 +173,48 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <button
-              onClick={handleDownloadResume}
-              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
-            >
-              <Download className="inline mr-2 h-5 w-5" />
-              Download Resume
-            </button>
-
-            <button
               onClick={() => scrollToSection('projects')}
-              className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-blue-500/25"
             >
               View Projects
               <ArrowRight className="inline ml-2 h-5 w-5" />
             </button>
 
             <button
+              onClick={handleDownloadResume}
+              className="w-full sm:w-auto border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+            >
+              <Download className="inline mr-2 h-5 w-5" />
+              Download Resume
+            </button>
+
+            <button
               onClick={() => scrollToSection('contact')}
-              className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="w-full sm:w-auto border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
               Contact Me
             </button>
+          </motion.div>
+
+          {/* Credibility Proof */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <span>1+ Years Professional Experience</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <span>Worked on Production-Level Systems</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <span>Backend-Focused Full-Stack Engineer</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
